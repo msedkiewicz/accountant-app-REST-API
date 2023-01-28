@@ -1,9 +1,9 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
 
 // import reducers
-import concerts from './concertsRedux';
-import seats from './seatsRedux';
+import concerts from "./concertsRedux";
+import seats from "./seatsRedux";
 
 // combine reducers
 const rootReducer = combineReducers({
@@ -11,11 +11,6 @@ const rootReducer = combineReducers({
   seats,
 });
 
-const store = createStore(
-  rootReducer,
-  compose(
-		applyMiddleware(thunk)
-	)
-);
+const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
 
 export default store;
