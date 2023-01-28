@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "run-p start:*" ,
-    "start:react": "cd client && npm run start",
+    "start:react": "cd client && npm run build",
     "start:api": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
