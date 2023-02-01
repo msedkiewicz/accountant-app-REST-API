@@ -14,29 +14,25 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addSeatRequest,
   getRequests,
+  loadSeats,
   loadSeatsRequest,
 } from "../../../redux/seatsRedux";
 
 import "./OrderTicketForm.scss";
 import SeatChooser from "./../SeatChooser/SeatChooser";
+import io from 'socket.io-client';
 
 const OrderTicketForm = () => {
   const dispatch = useDispatch();
   const requests = useSelector(getRequests);
-  console.log(requests);
 
-  //update seats every 2 mins
-  const delay = 120000;
+  const socket = io(process.env.NODE_ENV === 'production' ? '/' : 'http://localhost:8000/');
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      dispatch(loadSeatsRequest());
-    }, delay);
-
-    return () => clearInterval(interval); // cleanup
-  }, [dispatch]);
-
-  //end of seats update
+    socket.on('seatsUpdated', (seats) => {
+      dispatch(loadSeats(seats));
+  });
+  }, [dispatch, socket]);
 
   const [order, setOrder] = useState({
     client: "",
