@@ -2,8 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const socket = require("socket.io");
-
 const app = express();
+const mongoose = require("mongoose");
 
 //import routes
 const testimonialRoutes = require("./routes/testimonials.routes.js");
@@ -41,3 +41,13 @@ const io = socket(server);
 io.on("connection", (socket) => {
   console.log("Client connected with ID: " + socket.id);
 });
+
+mongoose.connect("mongodb://localhost:27017/newWave", {
+  useNewUrlParser: true,
+});
+const db = mongoose.connection;
+
+db.once("open", () => {
+  console.log("Connected to the database");
+});
+db.on("error", (err) => console.log("Error " + err));
