@@ -4,7 +4,7 @@ const path = require("path");
 const socket = require("socket.io");
 const app = express();
 const mongoose = require("mongoose");
-const uri = "mongodb+srv://m9KEMMlW5XB:ptY7Y3Stqkx3IAZPo3fQzmqbMwkdFfBNN@cluster0.cpy2a7a.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://m9KEMMlW5XB:ptY7Y3Stqkx3IAZPo3fQzmqbMwkdFfBNN@cluster0.cpy2a7a.mongodb.net/NewWaveDB?retryWrites=true&w=majority";
 
 //import routes
 const testimonialRoutes = require("./routes/testimonials.routes.js");
