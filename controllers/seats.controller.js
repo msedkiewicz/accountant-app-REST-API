@@ -1,4 +1,5 @@
 const Seat = require("../models/seat.model");
+var sanitize = require('mongo-sanitize');
 
 exports.getAllSeats = async (req, res) => {
   try {
@@ -32,7 +33,7 @@ exports.getSeatById = async (req, res) => {
 
 exports.createSeat = async (req, res) => {
   try {
-    const { day, seat, client, email } = req.body;
+    const { day, seat, client, email } = sanitize(req.body);
     const seatCheck = await Seat.exists({ day, seat });
     if (seatCheck) {
       res.status(400).json({ message: "Seat already taken" });
@@ -49,7 +50,7 @@ exports.createSeat = async (req, res) => {
 
 exports.updateSeat = async (req, res) => {
   try {
-    const { day, seat, client, email } = req.body;
+    const { day, seat, client, email } = sanitize(req.body);
     const id = +req.params.id;
     const updateSeat = await Seat.findById(id);
     if (!updateSeat) res.status(404).json({ message: "Not found" });
