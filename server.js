@@ -12,6 +12,12 @@ if (NODE_ENV === "production")
 else if (NODE_ENV === "test") dbURI = "mongodb://localhost:27017/NewWaveDBtest";
 else dbURI = "mongodb://localhost:27017/NewWaveDB";
 
+/* Server code for Replit */
+
+// if (NODE_ENV === "test") dbURI = "mongodb://localhost:27017/NewWaveDBtest";
+// else if (NODE_ENV === "development") dbURI = "mongodb://localhost:27017/NewWaveDB";
+// else dbURI = `mongodb+srv://m9KEMMlW5XB:${process.env.DB_PASS}@cluster0.cpy2a7a.mongodb.net/NewWaveDB?retryWrites=true&w=majority`
+
 //import routes
 const testimonialRoutes = require("./routes/testimonials.routes.js");
 const concertsRoutes = require("./routes/concerts.routes.js");
