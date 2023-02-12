@@ -10,7 +10,7 @@ const NODE_ENV = process.env.NODE_ENV;
 
 if (NODE_ENV === "production")
   uri =
-    "mongodb+srv://m9KEMMlW5XB:ptY7Y3Stqkx3IAZPo3fQzmqbMwkdFfBNN@cluster0.cpy2a7a.mongodb.net/NewWaveDB?retryWrites=true&w=majority";
+    `mongodb+srv://m9KEMMlW5XB:${process.env.DB_PASS}@cluster0.cpy2a7a.mongodb.net/NewWaveDB?retryWrites=true&w=majority`;
 else if (NODE_ENV === "test") uri = "mongodb://localhost:27017/NewWaveDBtest";
 else uri = "mongodb://localhost:27017/NewWaveDB";
 
