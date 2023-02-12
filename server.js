@@ -4,6 +4,7 @@ const path = require("path");
 const socket = require("socket.io");
 const app = express();
 const mongoose = require("mongoose");
+const helmet = require('helmet');
 
 const NODE_ENV = process.env.NODE_ENV;
 
@@ -23,6 +24,7 @@ const testimonialRoutes = require("./routes/testimonials.routes.js");
 const concertsRoutes = require("./routes/concerts.routes.js");
 const seatsRoutes = require("./routes/seats.routes.js");
 
+app.use(helmet());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
