@@ -5,10 +5,12 @@ const socket = require("socket.io");
 const app = express();
 const mongoose = require("mongoose");
 
-const dbURI =
-  process.env.NODE_ENV === "production"
-    ? `mongodb+srv://m9KEMMlW5XB:${process.env.DB_PASS}@cluster0.cpy2a7a.mongodb.net/NewWaveDB?retryWrites=true&w=majority`
-    : "mongodb://localhost:27017/NewWaveDBtest";
+const NODE_ENV = process.env.NODE_ENV;
+
+if (NODE_ENV === "production")
+  dbURI = `mongodb+srv://m9KEMMlW5XB:${process.env.DB_PASS}@cluster0.cpy2a7a.mongodb.net/NewWaveDB?retryWrites=true&w=majority`;
+else if (NODE_ENV === "test") dbURI = "mongodb://localhost:27017/NewWaveDBtest";
+else dbURI = "mongodb://localhost:27017/NewWaveDB";
 
 //import routes
 const testimonialRoutes = require("./routes/testimonials.routes.js");
