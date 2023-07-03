@@ -22,7 +22,7 @@
   "homepage": "https://github.com/msedkiewicz/testimonials-app-REST-API#readme",
   "dependencies": {
     "chai": "^4.3.7",
-    "chai-http": "^4.3.0",
+    "chai-http": "^4.4.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "helmet": "^3.21.1",
